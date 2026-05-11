@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gi_2026/quiz_app/quiz_app.dart';
+import 'package:flutter_gi_2026/shop_app/shop_app.dart';
 import 'package:flutter_gi_2026/test/test_app.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(textTheme: GoogleFonts.robotoTextTheme()),
-      home: QuizApp(),
+      home: ShopApp(),
     );
   }
 }
