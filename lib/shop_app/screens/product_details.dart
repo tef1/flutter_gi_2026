@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gi_2026/core/shop_app/app_config.dart';
 import 'package:flutter_gi_2026/model/shop_app/product.dart';
+import 'package:flutter_gi_2026/providers/shop_app/shop_app_provider.dart';
+import 'package:provider/provider.dart';
 
 class ProductDetails extends StatefulWidget {
   ProductDetails({
@@ -30,9 +32,12 @@ class _ProductDetailsState extends State<ProductDetails> {
           IconButton(
             onPressed: () {
               setState(() {
-                widget.product.isFavorite = widget.toggleFavoriteProduct(
-                  widget.product,
-                );
+                // widget.product.isFavorite = widget.toggleFavoriteProduct(
+                //   widget.product,
+                // );
+                widget.product.isFavorite = context
+                    .read<ShopAppProvider>()
+                    .toggleFavoriteProduct(widget.product);
               });
             },
             icon: Icon(

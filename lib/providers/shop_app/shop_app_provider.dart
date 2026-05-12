@@ -5,6 +5,7 @@ class ShopAppProvider extends ChangeNotifier {
   List<Product> favoriteProducts = [];
 
   bool toggleFavoriteProduct(Product pdt) {
+    print("im here");
     bool isFavorite = favoriteProducts.contains(pdt);
     if (isFavorite) {
       favoriteProducts.remove(pdt);

@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gi_2026/core/shop_app/api_client.dart';
 import 'package:flutter_gi_2026/model/shop_app/category.dart';
 import 'package:flutter_gi_2026/model/shop_app/product.dart';
+import 'package:flutter_gi_2026/providers/shop_app/shop_app_provider.dart';
 import 'package:flutter_gi_2026/services/shop_app/category_service.dart';
 import 'package:flutter_gi_2026/shop_app/screens/products_list.dart';
 import 'package:flutter_gi_2026/shop_app/widgets/cateogry_item.dart';
+import 'package:provider/provider.dart';
 
 class ShopApp extends StatefulWidget {
   const ShopApp({super.key});
@@ -15,6 +17,7 @@ class ShopApp extends StatefulWidget {
 
 class _ShopAppState extends State<ShopApp> {
   List<Product> favoriteProducts = [];
+
   late List<Widget> screens;
   int activeScreen = 0;
 
@@ -38,18 +41,24 @@ class _ShopAppState extends State<ShopApp> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    screens = [
-      CategoriesScreen(toggleFavoriteProduct: toggleFavoriteProduct),
-      ProductsList(
-        name: "Favorite Product",
-        products: favoriteProducts,
-        toggleFavoriteProduct: toggleFavoriteProduct,
-      ),
-    ];
   }
 
   @override
   Widget build(BuildContext context) {
+    List<Product> shopFavProduct = context
+        .watch<ShopAppProvider>()
+        .favoriteProducts;
+    screens = [
+      CategoriesScreen(toggleFavoriteProduct: toggleFavoriteProduct),
+      ProductsList(
+        name: "Favorite Product",
+        // products: favoriteProducts,
+        products: shopFavProduct,
+        toggleFavoriteProduct: toggleFavoriteProduct,
+      ),
+    ];
+    print("rebuild here");
+
     return Scaffold(
       body: screens[activeScreen],
       bottomNavigationBar: BottomNavigationBar(
