@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gi_2026/counter_app/counter_app.dart';
 import 'package:flutter_gi_2026/providers/shop_app/shop_app_provider.dart';
 import 'package:flutter_gi_2026/quiz_app/quiz_app.dart';
 import 'package:flutter_gi_2026/shop_app/shop_app.dart';
@@ -7,9 +8,16 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 void main() {
+  // runApp(
+  //   ChangeNotifierProvider(
+  //     create: (context) => ShopAppProvider(),
+  //     child: MyApp(),
+  //   ),
+  // );
+
   runApp(
     ChangeNotifierProvider(
-      create: (context) => ShopAppProvider(),
+      create: (context) => CounterProvider(),
       child: MyApp(),
     ),
   );
@@ -23,7 +31,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(textTheme: GoogleFonts.robotoTextTheme()),
-      home: ShopApp(),
+      home: CounterApp(),
     );
   }
 }
