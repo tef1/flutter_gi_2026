@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gi_2026/counter_app/compteur_app.dart';
 import 'package:flutter_gi_2026/counter_app/counter_app.dart';
 import 'package:flutter_gi_2026/counter_app/riverpod_counter.dart';
+import 'package:flutter_gi_2026/country_app/country_app.dart';
 import 'package:flutter_gi_2026/providers/shop_app/shop_app_provider.dart';
 import 'package:flutter_gi_2026/quiz_app/quiz_app.dart';
 import 'package:flutter_gi_2026/shop_app/shop_app.dart';
@@ -44,7 +45,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(textTheme: GoogleFonts.robotoTextTheme()),
-      home: RiverpodCounter(),
+      home: CountryApp(),
     );
   }
 }

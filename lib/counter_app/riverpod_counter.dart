@@ -18,16 +18,18 @@ class RiverpodCounter extends StatelessWidget {
   }
 }
 
-class CounterNotifier extends StateNotifier<int> {
-  CounterNotifier() : super(0);
+class CounterNotifier extends Notifier<int> {
+  // CounterNotifier() : super(0);
+  @override
+  int build() => 0;
 
   void increments() {
     state++;
   }
 }
 
-final CounterNotifierProvider = StateNotifierProvider<CounterNotifier, int>(
-  (ref) => CounterNotifier(),
+final CounterNotifierProvider = NotifierProvider<CounterNotifier, int>(
+  CounterNotifier.new,
 );
 
 class MyText extends ConsumerWidget {
@@ -37,8 +39,8 @@ class MyText extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     print("MyText build method called");
     // int c = context.watch<CompteurProvider>().counter;
-    // int c = ref.watch(CounterNotifierProvider);
-    int c = ref.watch(counterPvd);
+    int c = ref.watch(CounterNotifierProvider);
+    // int c = ref.watch(counterPvd);
     return Text("counter value is : $c");
   }
 }
@@ -52,8 +54,8 @@ class MyButton extends ConsumerWidget {
     return ElevatedButton(
       onPressed: () {
         // context.read<CompteurProvider>().increments();
-        // ref.read(CounterNotifierProvider.notifier).increments();
-        ref.read(counterPvd.notifier).state++;
+        ref.read(CounterNotifierProvider.notifier).increments();
+        // ref.read(counterPvd.notifier).state++;
       },
       child: Text("increments"),
     );
