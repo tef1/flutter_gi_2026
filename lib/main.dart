@@ -6,6 +6,7 @@ import 'package:flutter_gi_2026/country_app/country_app.dart';
 import 'package:flutter_gi_2026/providers/shop_app/shop_app_provider.dart';
 import 'package:flutter_gi_2026/quiz_app/quiz_app.dart';
 import 'package:flutter_gi_2026/shop_app/shop_app.dart';
+import 'package:flutter_gi_2026/storage/storage_app.dart';
 import 'package:flutter_gi_2026/test/test_app.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -45,7 +46,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(textTheme: GoogleFonts.robotoTextTheme()),
-      home: CountryApp(),
+      home: StorageApp(),
     );
   }
 }
